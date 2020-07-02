@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>io.kraftverk</groupId>
-            <artifactId>kraftverk</artifactId>
+            <artifactId>kraftverk-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>

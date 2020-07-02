@@ -1,11 +1,11 @@
 package io.kraftverk.samples.junit5
 
-import io.kraftverk.Kraftverk
-import io.kraftverk.binding.Binding
-import io.kraftverk.binding.Component
-import io.kraftverk.managed.*
-import io.kraftverk.module.Module
-import io.kraftverk.module.bind
+import io.kraftverk.core.Kraftverk
+import io.kraftverk.core.binding.Bean
+import io.kraftverk.core.binding.Binding
+import io.kraftverk.core.managed.*
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.bind
 import io.mockk.clearMocks
 import io.mockk.mockk
 import io.mockk.spyk
@@ -53,12 +53,10 @@ class KraftverkJunit5Extension<M : Module>(@PublishedApi internal val managed: M
 
     private fun runAnnotatedMethods(
         ctx: ExtensionContext,
-        annotationClass: KClass<*>
+        annotationClass: KClass<out Annotation>
     ) {
         ctx.testClass
-            .map { clazz ->
-                getMethodsListWithAnnotation(clazz, annotationClass.java as Class<out Annotation>?)
-            }
+            .map { clazz -> getMethodsListWithAnnotation(clazz, annotationClass.java) }
             .orElse(emptyList())
             .forEach { method ->
                 ctx.testInstance.ifPresent { instance ->
@@ -85,7 +83,7 @@ inline fun <M : Module, reified T : Any> KraftverkJunit5Extension<M>.get(noinlin
 
 inline fun <M : Module, reified T : Any> KraftverkJunit5Extension<M>.mockk(
     relaxed: Boolean = true,
-    noinline binding: M.() -> Component<T>
+    noinline binding: M.() -> Bean<T>
 ): ReadOnlyProperty<Any?, T> {
     val mock = mockk<T>(relaxed = relaxed)
     managed.configure {
@@ -97,7 +95,7 @@ inline fun <M : Module, reified T : Any> KraftverkJunit5Extension<M>.mockk(
     }
 }
 
-inline fun <M : Module, reified T : Any> KraftverkJunit5Extension<M>.spyk(noinline bean: M.() -> Component<T>):
+inline fun <M : Module, reified T : Any> KraftverkJunit5Extension<M>.spyk(noinline bean: M.() -> Bean<T>):
         ReadOnlyProperty<Any?, T> {
     managed.configure {
         bind(bean()) to { spyk(proceed()) }

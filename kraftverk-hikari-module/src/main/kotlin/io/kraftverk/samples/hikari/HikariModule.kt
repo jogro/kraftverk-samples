@@ -1,10 +1,10 @@
 package io.kraftverk.samples.hikari
 
 import com.zaxxer.hikari.HikariDataSource
-import io.kraftverk.module.Module
-import io.kraftverk.module.bean
-import io.kraftverk.module.configure
-import io.kraftverk.module.string
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.bean
+import io.kraftverk.core.module.configure
+import io.kraftverk.core.module.string
 
 class HikariModule : Module() {
 

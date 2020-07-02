@@ -1,8 +1,8 @@
 package io.kraftverk.samples.hibernate
 
-import io.kraftverk.module.Module
-import io.kraftverk.module.bean
-import io.kraftverk.module.configure
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.bean
+import io.kraftverk.core.module.configure
 import org.hibernate.SessionFactory
 import org.hibernate.boot.MetadataSources
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder

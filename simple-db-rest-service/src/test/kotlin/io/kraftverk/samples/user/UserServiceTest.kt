@@ -2,7 +2,7 @@ package io.kraftverk.samples.user
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
-import io.kraftverk.Kraftverk
+import io.kraftverk.core.Kraftverk
 import io.kraftverk.samples.AppModule
 import io.kraftverk.samples.junit5.get
 import io.kraftverk.samples.junit5.mockk

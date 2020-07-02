@@ -19,6 +19,7 @@
         <module>kraftverk-qpid-module</module>
         <module>kraftverk-rabbit-module</module>
         <module>simple-db-rest-service</module>
+        <module>simple-http-module</module>
     </modules>
 
     <properties>
@@ -63,8 +64,8 @@
             </dependency>
             <dependency>
                 <groupId>io.kraftverk</groupId>
-                <artifactId>kraftverk</artifactId>
-                <version>0.9.5</version>
+                <artifactId>kraftverk-core</artifactId>
+                <version>0.9.6</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>

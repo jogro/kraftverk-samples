@@ -1,7 +1,7 @@
 package io.kraftverk.samples
 
-import io.kraftverk.Kraftverk
-import io.kraftverk.module.*
+import io.kraftverk.core.Kraftverk
+import io.kraftverk.core.module.*
 import io.kraftverk.samples.hibernate.HibernateModule
 import io.kraftverk.samples.hikari.HikariModule
 import io.kraftverk.samples.javalin.JavalinModule
@@ -20,22 +20,22 @@ class AppModule : Module() {
     val http by module { JavalinModule() }
 
     init {
-        configure(orm.serviceRegistryBuilder) { b ->
-            b.applySetting(DATASOURCE, jdbc.dataSource())
+        configure(orm.serviceRegistryBuilder) {
+            it.applySetting(DATASOURCE, jdbc.dataSource())
         }
-        configure(orm.metadataSources) { m ->
-            m.addAnnotatedClass(User::class.java)
+        configure(orm.metadataSources) {
+            it.addAnnotatedClass(User::class.java)
         }
-        configure(http.server) { s ->
-            s.expose(user.controller())
+        configure(http.javalin) {
+            it.expose(user.controller())
         }
     }
 }
 
 class UserModule : ChildModule<AppModule>() {
 
-    private val sessionFactory by ref { orm.sessionFactory }
-    private val tx by ref { orm.tx }
+    private val sessionFactory by import { orm.sessionFactory }
+    private val tx by import { orm.tx }
 
     val repository by bean { UserRepository(sessionFactory()) }
     val service by bean { UserService(tx(), repository()) }
