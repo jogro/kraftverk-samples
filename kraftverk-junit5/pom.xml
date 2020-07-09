@@ -9,10 +9,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>kraftverk-junit5-module</artifactId>
+    <artifactId>kraftverk-junit5</artifactId>
     <packaging>jar</packaging>
 
-    <name>io.kraftverk.samples kraftverk-junit5-module</name>
+    <name>io.kraftverk.samples kraftverk-junit5</name>
 
     <dependencies>
         <dependency>

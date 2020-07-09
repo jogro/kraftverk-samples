@@ -55,33 +55,4 @@ internal class UserServiceTest {
             tx.rollback()
         }
     }
-
-    @Test
-    fun `update throws exception when name already exists`() {
-
-        every { repository.emailExists(any()) } returns false
-        every { repository.nameExists(any()) } returns true
-
-        val exception = shouldThrow<IllegalArgumentException> {
-            sut.update(TestObjects.user)
-        }
-        exception.message shouldBe "Name already exists"
-
-        verifyOrder {
-            tx.begin()
-            tx.rollback()
-        }
-    }
-
-    @Test
-    fun read() {
-        every { repository.findById(any()) } returns TestObjects.user
-        sut.findById(1L) shouldBe TestObjects.user
-        verifyOrder {
-            tx.begin()
-            repository.findById(1L)
-            tx.commit()
-        }
-    }
-
 }

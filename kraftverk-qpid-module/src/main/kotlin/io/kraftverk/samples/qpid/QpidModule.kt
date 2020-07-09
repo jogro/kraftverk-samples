@@ -1,6 +1,8 @@
 package io.kraftverk.samples.qpid
 
-import io.kraftverk.core.module.*
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.port
+import io.kraftverk.core.module.string
 import org.apache.qpid.server.SystemLauncher
 
 class QpidModule : Module() {
@@ -28,5 +30,4 @@ class QpidModule : Module() {
             }
         }
     }
-
 }

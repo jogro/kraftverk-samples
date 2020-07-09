@@ -26,10 +26,9 @@ open class UserRepository(private val sessionFactory: SessionFactory) {
     }
 
     fun update(user: User) {
-        session.merge(user)
+        session.update(user)
     }
 
     private fun Session.createExistsQuery(condition: String) =
         createQuery("select 1 from User where exists (select 1 from User u where $condition)")
-
 }

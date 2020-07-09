@@ -1,8 +1,6 @@
 package io.kraftverk.samples.hibernate
 
 import io.kraftverk.core.module.Module
-import io.kraftverk.core.module.bean
-import io.kraftverk.core.module.configure
 import org.hibernate.SessionFactory
 import org.hibernate.boot.MetadataSources
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder
@@ -20,8 +18,9 @@ class HibernateModule : Module() {
     val tx by bean { Tx(sessionFactory()) }
 
     init {
-        configure(serviceRegistryBuilder) { b ->
-            b.applySetting(AvailableSettings.TRANSACTION_COORDINATOR_STRATEGY, "jdbc")
+        configure(serviceRegistryBuilder) {
+            it.applySetting(AvailableSettings.TRANSACTION_COORDINATOR_STRATEGY, "jdbc")
+            it.applySetting(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread")
         }
     }
 }
@@ -42,7 +41,6 @@ class Tx(private val sessionFactory: SessionFactory) {
         session.transaction.commit()
     }
 }
-
 
 fun <T> Tx.read(block: () -> T): T = with(session) {
     transacted {

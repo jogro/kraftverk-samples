@@ -1,5 +1,3 @@
 package io.kraftverk.samples
 
-class HelloTest {
-
-}
+class HelloTest

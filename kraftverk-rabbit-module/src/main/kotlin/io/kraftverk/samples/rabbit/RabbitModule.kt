@@ -1,8 +1,15 @@
 package io.kraftverk.samples.rabbit
 
-import com.rabbitmq.client.*
+import com.rabbitmq.client.AMQP
+import com.rabbitmq.client.Channel
+import com.rabbitmq.client.Connection
+import com.rabbitmq.client.ConnectionFactory
+import com.rabbitmq.client.DefaultConsumer
+import com.rabbitmq.client.Envelope
 import com.rabbitmq.client.impl.AMQBasicProperties
-import io.kraftverk.core.module.*
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.port
+import io.kraftverk.core.module.string
 import org.apache.commons.pool2.PooledObject
 import org.apache.commons.pool2.PooledObjectFactory
 import org.apache.commons.pool2.impl.DefaultPooledObject
@@ -41,7 +48,6 @@ open class RabbitModule() : Module() {
                 onDestroy { if (it.isOpen) it.close() }
             }
         }
-
     }
 }
 
@@ -54,7 +60,6 @@ class Delivery<T : Any>(
 ) {
     fun ack() = channel.basicAck(envelope.deliveryTag, false)
 }
-
 
 class RabbitConsumer<T : Any>(
     private val conn: Connection,
@@ -98,9 +103,7 @@ class RabbitConsumer<T : Any>(
         }
         channel.basicConsume(queueName, false, consumer)
     }
-
 }
-
 
 class TxChannelFactory(private val connection: Connection) : PooledObjectFactory<Channel> {
 

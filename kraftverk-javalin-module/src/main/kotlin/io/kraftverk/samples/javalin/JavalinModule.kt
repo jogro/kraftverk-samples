@@ -2,7 +2,10 @@ package io.kraftverk.samples.javalin
 
 import io.javalin.Javalin
 import io.javalin.core.JavalinConfig
-import io.kraftverk.core.module.*
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.boolean
+import io.kraftverk.core.module.port
+import io.kraftverk.core.module.string
 
 class JavalinModule : Module() {
 
@@ -10,7 +13,7 @@ class JavalinModule : Module() {
     val enforceSsl by boolean(default = false)
     val port by port(default = 7000)
 
-    val config by sink<JavalinConfig>()
+    val config by pipe<JavalinConfig>()
 
     val javalin by bean { Javalin.create { c -> config(c) } }
 

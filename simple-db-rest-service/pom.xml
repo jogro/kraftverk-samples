@@ -25,6 +25,26 @@
             <artifactId>kraftverk-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin-openapi</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.10.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>2.9.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId> <!-- only required for annotated static handlers in Java -->
+            <version>4.8.34</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
@@ -47,19 +67,13 @@
 
         <dependency>
             <groupId>io.kraftverk.samples</groupId>
-            <artifactId>kraftverk-junit5-module</artifactId>
+            <artifactId>kraftverk-junit5</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>io.kraftverk.samples</groupId>
             <artifactId>kraftverk-javalin-module</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.kraftverk.samples</groupId>
-            <artifactId>kraftverk-qpid-module</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
@@ -74,16 +88,7 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.10.5</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-kotlin</artifactId>
-            <version>2.9.7</version>
-        </dependency>
+
 
 
     </dependencies>

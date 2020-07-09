@@ -3,7 +3,9 @@ package io.kraftverk.samples.sunhttp
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
 import com.sun.net.httpserver.HttpServer
-import io.kraftverk.core.module.*
+import io.kraftverk.core.module.Module
+import io.kraftverk.core.module.port
+import io.kraftverk.core.module.string
 import java.net.InetSocketAddress
 
 class SunHttpModule : Module() {
@@ -32,4 +34,3 @@ fun HttpExchange.respond(text: String) {
     sendResponseHeaders(200, text.toByteArray().size.toLong())
     responseBody.use { it.write(text.toByteArray()) }
 }
-

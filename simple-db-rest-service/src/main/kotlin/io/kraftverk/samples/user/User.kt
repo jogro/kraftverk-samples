@@ -11,6 +11,5 @@ class User(
     var id: Long = 0,
     var email: String,
     var name: String,
-    var password: String,
     var bio: String? = null
 )
