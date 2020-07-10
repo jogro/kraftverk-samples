@@ -28,6 +28,11 @@
             <artifactId>javalin</artifactId>
             <version>3.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin-openapi</artifactId>
+            <version>3.9.1</version>
+        </dependency>
     </dependencies>
 
     <build>

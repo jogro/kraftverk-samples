@@ -15,6 +15,7 @@ class UserController(private val userService: UserService) {
 
     @OpenApi(
         summary = "Create user",
+        tags = ["User"],
         requestBody = OpenApiRequestBody(content = [OpenApiContent(User::class)]),
         responses = [OpenApiResponse("200", [OpenApiContent(User::class)])]
     )
@@ -26,7 +27,11 @@ class UserController(private val userService: UserService) {
 
     @OpenApi(
         summary = "Read user",
-        responses = [OpenApiResponse("200", [OpenApiContent(User::class)]), OpenApiResponse("404")]
+        tags = ["User"],
+        responses = [
+            OpenApiResponse("200", [OpenApiContent(User::class)]),
+            OpenApiResponse("404")
+        ]
     )
     fun read(ctx: Context) {
         val id = ctx.pathParam("userId").toLong()
@@ -36,6 +41,7 @@ class UserController(private val userService: UserService) {
 
     @OpenApi(
         summary = "Update user",
+        tags = ["User"],
         requestBody = OpenApiRequestBody(content = [OpenApiContent(User::class)]),
         responses = [OpenApiResponse("204")]
     )
