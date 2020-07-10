@@ -55,7 +55,7 @@
             <dependency>
                 <groupId>io.kraftverk</groupId>
                 <artifactId>kraftverk-core</artifactId>
-                <version>0.9.12-SNAPSHOT</version>
+                <version>0.9.12</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
