@@ -26,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.4.10</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotest.version>4.0.6</kotest.version>
+        <kotest.version>4.3.1</kotest.version>
     </properties>
 
     <repositories>
@@ -70,7 +70,13 @@
             <dependency>
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk</artifactId>
-                <version>1.10.0</version>
+                <version>1.10.2</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-reflect</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -90,12 +96,6 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
-            <version>${kotest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.kotest</groupId>
-            <artifactId>kotest-core-jvm</artifactId>
             <version>${kotest.version}</version>
             <scope>test</scope>
         </dependency>
