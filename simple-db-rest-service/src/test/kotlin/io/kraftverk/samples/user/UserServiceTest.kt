@@ -20,9 +20,9 @@ internal class UserServiceTest {
     @RegisterExtension
     val app = Kraftverk.test { AppModule() }
 
-    private val repository by app.mockk { user.repository }
+    private val repository by app.mockk { userRepository }
     private val tx by app.mockk { orm.tx }
-    private val sut by app.get { user.service }
+    private val sut by app.get { userService }
 
     @Test
     fun create() {
