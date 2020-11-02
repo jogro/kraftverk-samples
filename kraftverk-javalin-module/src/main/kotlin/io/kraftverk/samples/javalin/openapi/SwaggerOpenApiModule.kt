@@ -10,7 +10,7 @@ import io.swagger.v3.oas.models.info.Info
 class SwaggerOpenApiModule : Module() {
 
     val version by string(default = "1.0")
-    val title by string(default="My API")
+    val title by string(default = "My API")
     val description by string(default = "My API")
     val docsPath by string(default = "/swagger-docs")
     val uiPath by string(default = "/swagger-ui")

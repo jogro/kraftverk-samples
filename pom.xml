@@ -24,7 +24,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.3.72</kotlin.version>
+        <kotlin.version>1.4.10</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>4.0.6</kotest.version>
     </properties>
@@ -55,7 +55,7 @@
             <dependency>
                 <groupId>io.kraftverk</groupId>
                 <artifactId>kraftverk-core</artifactId>
-                <version>0.9.12</version>
+                <version>0.9.16</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
